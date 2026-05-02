@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Guia do Barbeiro · ManualChave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --carvao: #1A1A1A;
+    --carvao-med: #2C2C2C;
+    --carvao-deep: #0D0D0D;
+    --dourado: #C9A84C;
+    --dourado-esc: #A07830;
+    --dourado-clr: #E8C97A;
+    --creme: #F5F0E8;
+    --creme-esc: #EDE5D4;
+    --branco: #FFFFFF;
+    --cinza-claro: #F0EDE8;
+    --cinza-medio: #9A9590;
+    --cinza-esc: #5A5550;
+    --preto: #0D0D0D;
+    --sangue: #6B1F1F;
+
+    --f-titulo: 'Poppins', sans-serif;
+    --f-corpo: 'Lora', serif;
+    --f-display: 'Playfair Display', serif;
+    --f-mono: 'DM Mono', monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family: var(--f-corpo);
+    background: var(--creme);
+    color: var(--carvao);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  button{font: inherit; cursor: pointer; border: none; background: none; color: inherit;}
+
+  /* Listras de barbershop animadas */
+  @keyframes barberStripe {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 56px; }
+  }
+  .barber-pole {
+    background: repeating-linear-gradient(
+      135deg,
+      var(--branco) 0 14px,
+      #b22 14px 28px,
+      var(--branco) 28px 42px,
+      #1d3a8a 42px 56px
+    );
+    animation: barberStripe 4s linear infinite;
+  }
+  .barber-pole-thin {
+    background: repeating-linear-gradient(
+      135deg,
+      var(--carvao) 0 6px,
+      var(--dourado) 6px 12px
+    );
+  }
+
+  /* Texturas */
+  .grain::before{
+    content:"";
+    position:absolute; inset:0;
+    pointer-events:none;
+    opacity:.08;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Selection */
+  ::selection{ background: var(--dourado); color: var(--carvao); }
+
+  /* Scroll smooth */
+  html{ scroll-behavior: smooth; }
+
+  /* Utility */
+  .container{ max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .container-narrow{ max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+  .eyebrow{
+    font-family: var(--f-titulo);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+  .display{
+    font-family: var(--f-display);
+    font-weight: 900;
+    line-height: .95;
+    letter-spacing: -0.01em;
+  }
+  .h1{
+    font-family: var(--f-titulo);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-size: clamp(28px, 4vw, 44px);
+  }
+  .h2{
+    font-family: var(--f-titulo);
+    font-weight: 700;
+    line-height: 1.15;
+    font-size: clamp(20px, 2.4vw, 26px);
+  }
+  .lede{
+    font-family: var(--f-corpo);
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.6;
+  }
+  .mono{ font-family: var(--f-mono); }
+
+  /* Botão CTA principal */
+  .btn-primary{
+    display:inline-flex; align-items:center; gap: 14px;
+    background: var(--dourado);
+    color: var(--carvao);
+    font-family: var(--f-titulo);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 18px 28px;
+    border: 2px solid var(--dourado);
+    border-radius: 2px;
+    text-decoration: none;
+    position: relative;
+    transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 0 0 0 rgba(201,168,76,.0);
+  }
+  .btn-primary:hover{
+    background: var(--dourado-esc);
+    border-color: var(--dourado-esc);
+    box-shadow: 0 12px 30px -12px rgba(201,168,76,.6);
+    transform: translateY(-1px);
+  }
+  .btn-primary .arrow{ transition: transform .2s ease; }
+  .btn-primary:hover .arrow{ transform: translateX(4px); }
+
+  .btn-ghost{
+    display:inline-flex; align-items:center; gap:10px;
+    color: var(--dourado);
+    border: 1.5px solid var(--dourado);
+    background: transparent;
+    font-family: var(--f-titulo);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+  .btn-ghost:hover{ background: var(--dourado); color: var(--carvao); }
+
+  /* Sticky CTA bar */
+  .sticky-cta{
+    position: fixed; left:0; right:0; bottom:0;
+    background: var(--carvao);
+    border-top: 2px solid var(--dourado);
+    padding: 12px 24px;
+    transform: translateY(100%);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    z-index: 200;
+    display:flex; align-items:center; justify-content:space-between; gap: 16px;
+  }
+  .sticky-cta.visible{ transform: translateY(0); }
+  .sticky-cta .copy{
+    color: var(--branco);
+    font-family: var(--f-titulo);
+    font-size: 13px;
+  }
+  .sticky-cta .copy strong{ color: var(--dourado); font-weight: 700; }
+
+  /* Section divider art-deco */
+  .deco-rule{
+    display:flex; align-items:center; gap:12px;
+    color: var(--dourado);
+  }
+  .deco-rule .line{ flex:1; height:1px; background: currentColor; opacity:.6; }
+  .deco-rule .glyph{ font-size: 10px; letter-spacing: .4em; }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+
+  /* Anchor offset for sticky */
+  section[id]{ scroll-margin-top: 24px; }
+
+  @media (max-width: 720px){
+    .container, .container-narrow{ padding: 0 20px; }
+    .sticky-cta{ padding: 10px 16px; }
+    .sticky-cta .copy{ display:none; }
+
+    /* Perfis: 2 cards por fileira (3 fileiras) */
+    .profiles-grid{ grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+    .profiles-grid > div{ padding: 16px 14px !important; gap: 10px !important; }
+    .profiles-grid img{ width: 52px !important; height: 52px !important; }
+    .profiles-grid > div > div:first-child{ width: 52px !important; height: 52px !important; }
+
+    /* Produtos: 1 por fileira */
+    .products-grid{ grid-template-columns: 1fr !important; }
+
+    /* Stats: 3 colunas viram 1 com fontes menores; bloco full-bleed */
+    .stats-bar{ grid-template-columns: 1fr !important; gap: 20px !important; padding: 28px 24px !important; text-align: center; }
+    .stats-bar .stat-num{ font-size: 44px !important; justify-content: center; }
+    .stats-bar .stat-label{ font-size: 10px !important; }
+  }
+
+  /* Stats bar (full-bleed) — sempre */
+  .stats-fullbleed{
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- Sticky CTA (rendered outside React for reliable z-index) -->
+<div class="sticky-cta" id="stickyCTA">
+  <div class="copy">
+    <strong>R$ 19,90</strong> · acesso imediato · garantia de 7 dias
+  </div>
+  <a href="#oferta" class="btn-primary" style="padding:12px 22px; font-size:13px;">
+    QUERO O GUIA <span class="arrow">→</span>
+  </a>
+</div>
+
+<script>
+  // Sticky CTA visibility
+  (function(){
+    const el = document.getElementById('stickyCTA');
+    let shown = false;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+      const should = y > vh * 0.7;
+      if (should !== shown){
+        shown = should;
+        el.classList.toggle('visible', shown);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="src/atoms.jsx"></script>
+<script type="text/babel" src="src/hero.jsx"></script>
+<script type="text/babel" src="src/sections-1.jsx"></script>
+<script type="text/babel" src="src/sections-2.jsx"></script>
+<script type="text/babel" src="src/sections-3.jsx"></script>
+<script type="text/babel" src="src/sections-4.jsx"></script>
+<script type="text/babel" src="src/app.jsx"></script>
+
+</body>
+</html>
