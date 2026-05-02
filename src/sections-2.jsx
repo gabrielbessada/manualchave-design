@@ -141,8 +141,8 @@ const BenefitsSection = () => (
 );
 
 const TESTIMONIALS = [
-  { name: 'Lucas M.', meta: '27 anos · São Paulo', collaborator: true, photo: 'lucas', img: 'assets/testimonial-lucas.png', quote: 'Em 24 dias abri. O módulo financeiro junto com a planilha me salvaram... eu ia gastar errado na reforma antes de ter caixa de reserva.' },
-  { name: 'Rodrigo T.', meta: 'barbeiro há 4 anos · interior do RJ', collaborator: true, photo: 'rodrigo', img: 'assets/testimonial-rodrigo.png', tall: true, quote: 'O que me pegou foi a parte de legislação. Eu ia abrir sem alvará sanitário sem saber. Ia levar multa na primeira semana. O guia me mostrou o que fazer antes de assinar o contrato do ponto.' },
+  { name: 'Lucas M.', meta: '27 anos · São Paulo', collaborator: true, photo: 'lucas', img: 'assets/Gemini_Generated_Image_5ypvh65ypvh65ypv(1).png', quote: 'Em 24 dias abri. O módulo financeiro junto com a planilha me salvaram... eu ia gastar errado na reforma antes de ter caixa de reserva.' },
+  { name: 'Rodrigo T.', meta: 'barbeiro há 4 anos · interior do RJ', collaborator: true, photo: 'rodrigo', img: 'assets/Gemini_Generated_Image_kocm38kocm38kocm(1).png', tall: true, quote: 'O que me pegou foi a parte de legislação. Eu ia abrir sem alvará sanitário sem saber. Ia levar multa na primeira semana. O guia me mostrou o que fazer antes de assinar o contrato do ponto.' },
   { name: 'Felipe R.', meta: 'sem experiência prévia · Curitiba', photo: 'felipe', quote: 'Tentei montar tudo com conteúdo do YouTube. Eram 15 vídeos, cada um falando uma coisa. O guia é tudo no mesmo lugar, na ordem certa. Em 12 dias já tinha data de abertura marcada.' },
 ];
 
@@ -179,7 +179,7 @@ const SocialProofSection = () => (
         </h2>
       </div>
 
-      <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, alignItems: 'stretch' }}>
+      <div className=”testimonials-grid” style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, alignItems: 'stretch' }}>
         {TESTIMONIALS.map((t, i) => (
           <figure key={i} style={{
             margin: 0, padding: '32px 28px',
@@ -192,9 +192,9 @@ const SocialProofSection = () => (
               position: 'absolute', top: 12, right: 16,
               fontFamily: 'var(--f-display)', fontSize: 80, fontStyle: 'italic',
               color: 'var(--dourado)', opacity: .25, lineHeight: .8, fontWeight: 900,
-            }}>“</div>
+            }}>”</div>
             <div style={{ display: 'flex', gap: 4, marginBottom: 14 }}>
-              {[1,2,3,4,5].map(s => <StarIcon key={s} size={14} color="var(--dourado)" />)}
+              {[1,2,3,4,5].map(s => <StarIcon key={s} size={14} color=”var(--dourado)” />)}
             </div>
             <blockquote style={{
               margin: 0, fontFamily: 'var(--f-corpo)', fontSize: 16, fontStyle: 'italic',
@@ -207,7 +207,7 @@ const SocialProofSection = () => (
               <div style={{
                 marginTop: 20,
                 ...(t.tall
-                  ? { flex: '1 1 auto', minHeight: 280 }
+                  ? { width: '100%', aspectRatio: '3 / 4' }
                   : { aspectRatio: '4 / 3' }),
                 background: t.img
                   ? `url(${t.img}) center/cover no-repeat`
@@ -227,8 +227,8 @@ const SocialProofSection = () => (
                     }}>FOTO · BARBEARIA</div>
                     <div style={{ textAlign: 'center', color: 'var(--dourado)' }}>
                       <div style={{ display: 'inline-flex', gap: 10, marginBottom: 8 }}>
-                        <ScissorsIcon size={28} color="var(--dourado)" />
-                        <RazorIcon size={28} color="var(--dourado)" />
+                        <ScissorsIcon size={28} color=”var(--dourado)” />
+                        <RazorIcon size={28} color=”var(--dourado)” />
                       </div>
                       <div style={{ fontFamily: 'var(--f-display)', fontStyle: 'italic', fontSize: 13, color: 'rgba(255,255,255,.7)' }}>
                         placeholder
